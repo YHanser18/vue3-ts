@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 编译目标代码的版本标准
+    "useDefineForClassFields": true,
+    "module": "ESNext", // 编译目标使用的模块化标准
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"], // 指定ts环境
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  // 指定tsc编译的范围
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "Element-puls.d.ts"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
