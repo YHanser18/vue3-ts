@@ -4019,7 +4019,7 @@
   "resolved" "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.11.tgz"
   "version" "0.13.11"
 
-"vue-eslint-parser@^9.0.1":
+"vue-eslint-parser@^9.0.1", "vue-eslint-parser@^9.1.1":
   "integrity" "sha512-C2aI/r85Q6tYcz4dpgvrs4wH/MqVrRAVIdpYedrxnATDHHkb+TroeRcDpKWGZCx/OcECMWfz7tVwQ8e+Opy6rA=="
   "resolved" "https://registry.npmmirror.com/vue-eslint-parser/-/vue-eslint-parser-9.1.1.tgz"
   "version" "9.1.1"

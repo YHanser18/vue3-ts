@@ -15,9 +15,10 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
-  // 指定tsc编译的范围
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",

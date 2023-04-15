@@ -1,10 +1,33 @@
 <template>
-  <div class="container" :class="{ 'sign-up-mode': signUpMode }">
+  <div class='container' :class='{ "sign-up-mode": signUpMode }'>
     <!-- form表单容器 -->
-    <div class="forms-container">
-      <div class="signin-signup">
+    <div class='forms-container'>
+      <div class='signin-signup'>
         <!-- 登录 -->
-        <h1>登录</h1>
+        <el-form
+          :model='loginForm'
+          :rules='loginRules'
+          ref='loginFormRef'
+          status-icon
+          label-width='120px'
+          class='loginForm sign-in-form'
+        >
+          <el-form-item label='Password' prop='password'>
+            <el-input
+              v-model='loginForm.password'
+              placeholder='Enter Password ...'
+              type='password'
+              autocomplete='off'
+            />
+          </el-form-item>
+          <el-form-item label='Email' prop='email'>
+            <el-input v-model='loginForm.email' placeholder='Enter Emial ...' autocomplete='off' />
+          </el-form-item>
+          <el-form-item>
+            <el-button @click='handleLogin' type='primary'>Submit</el-button>
+            <el-button @click='resetForm'>Reset</el-button>
+          </el-form-item>
+        </el-form>
 
         <!-- 注册 -->
         <h1>注册</h1>
@@ -12,35 +35,102 @@
     </div>
 
     <!-- 左右切换动画 -->
-    <div class="panels-container">
-      <div class="panel left-panel">
-        <div class="content">
+    <div class='panels-container'>
+      <div class='panel left-panel'>
+        <div class='content'>
           <h3>学习是为了有更多的选择,让生活变的更美好!</h3>
           <p>何以解忧,唯有米修</p>
-          <button @click="signUpMode = !signUpMode" class="btn transparent">注册</button>
+          <button @click='signUpMode = !signUpMode' class='btn transparent'>注册</button>
         </div>
-        <img src="@/assets/img/log.svg" class="image" />
+        <img src='@/assets/img/log.svg' class='image' />
       </div>
 
-      <div class="panel right-panel">
-        <div class="content">
+      <div class='panel right-panel'>
+        <div class='content'>
           <h3>以人为镜,可明得失, 以代码为镜,可通逻辑!</h3>
           <p>学习编程,让你的生活更有趣</p>
-          <button @click="signUpMode = !signUpMode" class="btn transparent">登录</button>
+          <button @click='signUpMode = !signUpMode' class='btn transparent'>登录</button>
         </div>
-        <img src="@/assets/img/register.svg" class="image" />
+        <img src='@/assets/img/register.svg' class='image' />
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup name="LoginRegister">
+<script setup name="LoginRegister">
 import { ref } from 'vue'
 
+// 登录注册切换
 const signUpMode = ref(false)
+
+// 登录表单
+const loginForm = ref({
+  email: '',
+  password: ''
+})
+
+// 登录验证
+const handleLogin = () => {
+  // loginFormRef.value.validate((valid) => {
+  //   if (valid) {
+  //   }
+  // })
+}
+
+// 清空表单
+const resetForm = () => {
+  // loginForm.value = ''
+}
+
+// 表单验证规则
+const loginRules = ref({
+  email: [
+    {
+      type: 'email',
+      message: 'Email is incorrect...',
+      required: true,
+      trigger: 'blur'
+    }
+  ],
+  password: [
+    {
+      message: 'Email could not be empty...',
+      required: true,
+      trigger: 'blur'
+    },
+    {
+      min: 6,
+      max: 30,
+      message: "Password's length has to be 6 to 30 characters...",
+      trigger: 'blur'
+    }
+  ]
+})
 </script>
 
 <style scoped>
+/* form */
+.loginForm {
+  padding: 30px 40px 20px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #cccc;
+  background-color: #fff;
+}
+.el-input {
+  width: 70%;
+}
+.submit-btn {
+  width: 100%;
+}
+.tiparea {
+  text-align: right;
+  font-size: 12px;
+  color: #333;
+}
+.tiparea p a {
+  color: #409eff;
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -62,7 +152,7 @@ const signUpMode = ref(false)
   top: 50%;
   transform: translate(-50%, -50%);
   left: 75%;
-  width: 44%;
+  width: 40%;
   transition: 1s 0.7s ease-in-out;
   display: grid;
   grid-template-columns: 1fr;
@@ -178,6 +268,7 @@ const signUpMode = ref(false)
   font-weight: 600;
   line-height: 1;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 .panel p {
